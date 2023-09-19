@@ -2,6 +2,8 @@ require("@nomicfoundation/hardhat-toolbox");
 require("hardhat-deploy")
 require("hardhat-gas-reporter")
 require("@nomicfoundation/hardhat-ethers")
+require ("dotenv").config()
+
 
 
 const SEPOLIA_RPC_URL=process.env.SEPOLIA_RPC_URL || "https://eth-sepolia"
@@ -18,10 +20,10 @@ module.exports = {
           // gasPrice: 130000000000,
       },
       sepolia: {
-          url: SEPOLIA_RPC_URL,
-          accounts: [],
-          chainId: 11155111,
-          blockConfirmations: 6,
+          url:SEPOLIA_RPC_URL,
+          accounts:[privateKey],
+          chainId:11155111,
+          blockConfirmations:6,
       },
   },
   
