@@ -1,0 +1,264 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/ankit/ethers-simple-storage/solidity/lottery_hardhat/contracts/raffle.sol": {
+      "lastModificationDate": 1695545435939,
+      "contentHash": "23ac41cad75d34a246f8dad1c4afdc37",
+      "sourceName": "contracts/raffle.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol",
+        "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol",
+        "@chainlink/contracts/src/v0.8/automation/AutomationCompatible.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "Raffle"
+      ]
+    },
+    "/home/ankit/ethers-simple-storage/solidity/lottery_hardhat/node_modules/@chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol": {
+      "lastModificationDate": 1695399080490,
+      "contentHash": "eb9cc526ef59dfc4d644f56ddca0633a",
+      "sourceName": "@chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "VRFConsumerBaseV2"
+      ]
+    },
+    "/home/ankit/ethers-simple-storage/solidity/lottery_hardhat/node_modules/@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol": {
+      "lastModificationDate": 1695399079410,
+      "contentHash": "4c0aa4a1199644691c779f07e1fec059",
+      "sourceName": "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "VRFCoordinatorV2Interface"
+      ]
+    },
+    "/home/ankit/ethers-simple-storage/solidity/lottery_hardhat/node_modules/@chainlink/contracts/src/v0.8/automation/AutomationCompatible.sol": {
+      "lastModificationDate": 1695399080690,
+      "contentHash": "c962c53a75d722542c83859d848edd5b",
+      "sourceName": "@chainlink/contracts/src/v0.8/automation/AutomationCompatible.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./AutomationBase.sol",
+        "./interfaces/AutomationCompatibleInterface.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AutomationCompatible"
+      ]
+    },
+    "/home/ankit/ethers-simple-storage/solidity/lottery_hardhat/node_modules/@chainlink/contracts/src/v0.8/automation/AutomationBase.sol": {
+      "lastModificationDate": 1695399080680,
+      "contentHash": "80067f44d8bddd615599f8d73b9726a5",
+      "sourceName": "@chainlink/contracts/src/v0.8/automation/AutomationBase.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AutomationBase"
+      ]
+    },
+    "/home/ankit/ethers-simple-storage/solidity/lottery_hardhat/node_modules/@chainlink/contracts/src/v0.8/automation/interfaces/AutomationCompatibleInterface.sol": {
+      "lastModificationDate": 1695399080720,
+      "contentHash": "c52969cee392918edbf23f914e01c0dc",
+      "sourceName": "@chainlink/contracts/src/v0.8/automation/interfaces/AutomationCompatibleInterface.sol",
+      "solcConfig": {
+        "version": "0.8.7",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AutomationCompatibleInterface"
+      ]
+    }
+  }
+}
