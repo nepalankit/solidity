@@ -22,7 +22,7 @@ error Raffle_UpkeepNotNeeded(
  * @dev This implements the Chainlink VRF Version 2
  */
 
-contract Raffle is VRFConsumerBaseV2, AutomationCompatible {
+contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     enum RaffleState {
         OPEN,
         CALCULATING
