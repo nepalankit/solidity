@@ -5,7 +5,7 @@ import constants from './constants';
 
 function PickWinner() {
     const [owner, setOwner] = useState('');
-    const [contractInstance, setcontractInstance] = useState('');
+    const [contractInstance, setcontractInstance] = useState({});
     const [currentAccount, setCurrentAccount] = useState('');
     const [isOwnerConnected, setisOwnerConnected] = useState(false);
     const [winner, setWinner] = useState('');
@@ -14,9 +14,9 @@ function PickWinner() {
     useEffect(() => {
         const loadBlockchainData = async () => {
             if (typeof window.ethereum !== 'undefined') {
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const provider = new ethers.BrowserProvider(window.ethereum);
                 try {
-                    const signer = provider.getSigner();
+                    const signer = await provider.getSigner();
                     const address = await signer.getAddress();
                     console.log(address);
                     setCurrentAccount(address);
@@ -34,15 +34,15 @@ function PickWinner() {
         };
 
         const contract = async () => {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = await provider.getSigner();
             const contractIns = new ethers.Contract(constants.contractAddress, constants.contractAbi, signer);
             setcontractInstance(contractIns);
-            const status = await contractInstance.isComplete();
+            const status = await contractIns.isComplete();
             setStatus(status);
-            const winner = await contractInstance.getWinner();
+            const winner = await contractIns.getWinner();
             setWinner(winner);
-            const owner = await contractInstance.getManager();
+            const owner = await contractIns.getManager();
             setOwner(owner);
             if (owner === currentAccount) {
                 setisOwnerConnected(true);

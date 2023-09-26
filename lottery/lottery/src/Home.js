@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from 'ethers';
-import constants from './constants';
+import { contractAbi, contractAddress } from './constants';
 
 function Home() {
     const [currentAccount, setCurrentAccount] = useState("");
@@ -11,9 +11,9 @@ function Home() {
     useEffect(() => {
         const loadBlockchainData = async () => {
             if (typeof window.ethereum !== 'undefined') {
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const provider = new ethers.BrowserProvider(window.ethereum);
                 try {
-                    const signer = provider.getSigner();
+                    const signer = await provider.getSigner();
                     const address = await signer.getAddress();
                     console.log(address);
                     setCurrentAccount(address);
@@ -30,30 +30,51 @@ function Home() {
             }
         };
 
+
         const contract = async () => {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const contractIns = new ethers.Contract(constants.contractAddress, constants.contractAbi, signer);
-            setcontractInstance(contractIns);
-            const status = await contractInstance.isComplete();
-            setStatus(status);
-            const winner = await contractInstance.getWinner();
-            if (winner === currentAccount) {
-                setIsWinner(true);
-            } else {
-                setIsWinner(false);
+            try {
+                const provider = new ethers.BrowserProvider(window.ethereum);
+                await window.ethereum.enable();
+                const signer = await provider.getSigner();
+                // console.log(signer);
+                console.log(contractAddress);
+                // console.log();
+                const contractIns = new ethers.Contract(contractAddress, contractAbi, signer);
+                // console.log(contractIns);
+                setcontractInstance(contractIns);
+
+                // Debug logging
+                console.log("Contract instance:", contractIns);
+
+                const status = await contractIns.isComplete();
+                setStatus(status);
+                const winner = await contractIns.getWinner();
+                if (winner === currentAccount) {
+                    setIsWinner(true);
+                } else {
+                    setIsWinner(false);
+                }
+            } catch (err) {
+                console.error("Error initializing contract:", err);
             }
         }
+
 
         loadBlockchainData();
         contract();
     }, [currentAccount]);
 
     const enterLottery = async () => {
-        const amountToSend = ethers.utils.parseEther('0.001');
-        const tx = await contractInstance.enter({ value: amountToSend, });
-        await tx.wait();
+        if (contractInstance) {
+            console.log(contractInstance)
+            const amountToSend = ethers.parseEther('0.001');
+            const tx = await contractInstance.enter({ value: amountToSend });
+            await tx.wait();
+        } else {
+            console.error("Contract instance is not fully initialized.");
+        }
     }
+
 
     const claimPrize = async () => {
         const tx = await contractInstance.claimPrize();
