@@ -5,7 +5,10 @@ import { ethers } from "ethers";
 import "./components/Manager"
 import './App.css';
 import Manager from './components/Manager';
-
+import Players from "./components/Players"
+import { BrowserRouter } from "react-router-dom"
+import { Routes, Route, Link } from "react-router-dom"
+import Intro from './components/Intro';
 function App() {
   const [state, setState] = useState({
     provider: null,
@@ -15,7 +18,7 @@ function App() {
   const [account, setAccount] = useState("none")
   useEffect(() => {
     const connectWallet = async () => {
-      const contractAddress = "0x01Da76877809cAfEfc37119A7BA44b741A487Cd7"
+      const contractAddress = "0xE87008c9736DC688e7A7AE501b2745C921D84Aad"
       const contractABI = abi.abi;
       try {
         const { ethereum } = window;
@@ -45,12 +48,31 @@ function App() {
     connectWallet()
   }, [])
   console.log(state)
+
+
   return (
+
     <div className="App">
-      {/* <p>Connected Account{account} </p> */}
+      {/* Navigation */}
 
-      <Manager state={state} />
+      <nav>
+        <ul>
+          <li>
+            <Link to="/manager">Manager</Link>
+          </li>
+          <li>
+            <Link to="/players">Players</Link>
+          </li>
+        </ul>
+      </nav>
 
+      {/* Routes */}
+      <Routes>
+
+        <Route exact path="/" element={<Intro />} />
+        <Route path="/manager" element={<Manager state={state} />} />
+        <Route path="/players" element={<Players state={state} />} />
+      </Routes>
     </div>
   );
 }

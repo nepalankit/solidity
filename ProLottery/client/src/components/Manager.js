@@ -26,13 +26,13 @@ const Manager = ({ state }) => {
 
         try {
 
-            const balance = await contract.methods.getBalance().call({ from: account })
+            const balance = await contract.getBalance()
             console.log(balance)
             setCbalance(balance)
         }
         catch (e) {
 
-            setCbalance("You are the Contract Owner")
+            setCbalance("You are not the Contract Owner")
         }
     }
 
@@ -40,9 +40,9 @@ const Manager = ({ state }) => {
         const { contract } = state;
         try {
 
-            await contract.methods.pickWinner().send({ from: account });
+            await contract.pickWinner()
             //whenever you are changing state of blockchain use send
-            const lotteryWinner = await contract.methods.winner().call()
+            const lotteryWinner = await contract.winner()
             console.log(lotteryWinner)
             setLwinner(lotteryWinner);
         }
